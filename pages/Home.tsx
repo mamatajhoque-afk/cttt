@@ -16,7 +16,7 @@ const Home = () => {
         videoUrl="https://assets.mixkit.co/videos/preview/mixkit-clothes-on-a-clothing-rack-4217-large.mp4"
       />
 
-      {/* 2. Quote Section */}
+      {/* 2. Quote Section - Kept compact as a divider */}
       <section className="bg-white py-16 border-b">
         <div className="max-w-[85%] mx-auto text-center px-4 animate-fade-in-up">
           <p className="text-2xl md:text-4xl font-serif italic text-brand-blue font-semibold leading-relaxed">
@@ -27,26 +27,26 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. Stats Section - Much Bigger */}
-      <section className="py-20 bg-white">
-        <div className="max-w-[90%] mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-[#e7f9fd] py-16 px-10 rounded-3xl text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                <h3 className="text-6xl md:text-8xl font-bold text-brand-navy">+5</h3>
-                <p className="text-lg md:text-xl text-gray-600 uppercase tracking-widest mt-6 font-bold">Global Presence</p>
+      {/* 3. Stats Section - Medium Size */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-[#e7f9fd] py-12 px-8 rounded-3xl text-center shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-brand-light">
+                <h3 className="text-5xl md:text-6xl font-bold text-brand-navy mb-4">+5</h3>
+                <p className="text-base md:text-lg text-gray-600 uppercase tracking-widest font-bold">Global Presence</p>
             </div>
-            <div className="bg-[#e7f9fd] py-16 px-10 rounded-3xl text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                <h3 className="text-6xl md:text-8xl font-bold text-brand-navy">+40</h3>
-                <p className="text-lg md:text-xl text-gray-600 uppercase tracking-widest mt-6 font-bold">Staff World Wide</p>
+            <div className="bg-[#e7f9fd] py-12 px-8 rounded-3xl text-center shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-brand-light">
+                <h3 className="text-5xl md:text-6xl font-bold text-brand-navy mb-4">+40</h3>
+                <p className="text-base md:text-lg text-gray-600 uppercase tracking-widest font-bold">Staff World Wide</p>
             </div>
-            <div className="bg-[#e7f9fd] py-16 px-10 rounded-3xl text-center shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                <h3 className="text-6xl md:text-8xl font-bold text-brand-navy">+20</h3>
-                <p className="text-lg md:text-xl text-gray-600 uppercase tracking-widest mt-6 font-bold">Recommended</p>
+            <div className="bg-[#e7f9fd] py-12 px-8 rounded-3xl text-center shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-brand-light">
+                <h3 className="text-5xl md:text-6xl font-bold text-brand-navy mb-4">+20</h3>
+                <p className="text-base md:text-lg text-gray-600 uppercase tracking-widest font-bold">Recommended</p>
             </div>
         </div>
       </section>
 
-      {/* 4. About Us Section */}
-      <section className="py-20 bg-white">
+      {/* 4. About Us Section - Full Screen */}
+      <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
         <div className="w-full max-w-[90%] mx-auto px-4 flex flex-col gap-20">
             
             {/* Header and Intro Text - FULL WIDTH */}
@@ -115,8 +115,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 5. Fashion Evolution */}
-      <section className="py-20 bg-gray-50">
+      {/* 5. Fashion Evolution - Full Screen */}
+      <section className="min-h-screen flex flex-col justify-center py-20 bg-gray-50">
         <div className="max-w-[90%] mx-auto px-4">
             <h2 className="text-4xl md:text-6xl font-serif font-bold text-brand-navy mb-4">Fashion Evolution</h2>
             <p className="text-xl text-brand-green italic mb-8">Where Trends Begin — Designing Fashion in Motion... !</p>
@@ -154,8 +154,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 6. Market Intel Design */}
-      <section className="py-20 bg-white">
+      {/* 6. Market Intel Design - Full Screen */}
+      <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
           <div className="max-w-[90%] mx-auto px-4">
               <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy uppercase mb-4">Market Intel Design</h2>
               <div className="w-24 h-1 bg-brand-green mb-6"></div>
@@ -224,8 +224,8 @@ const Home = () => {
           </div>
       </section>
 
-      {/* 7. Ethical & Responsive Sourcing */}
-      <section className="py-20 bg-gray-50">
+      {/* 7. Ethical & Responsive Sourcing - Full Screen */}
+      <section className="min-h-screen flex flex-col justify-center py-20 bg-gray-50">
           <div className="max-w-[90%] mx-auto px-4 grid md:grid-cols-2 gap-16">
               <div className="flex flex-col justify-center">
                   <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Ethical & Responsive Sourcing</h2>

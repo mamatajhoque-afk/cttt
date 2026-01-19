@@ -12,7 +12,7 @@ const Sustainability = () => {
         videoUrl="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"
       />
       
-      <section className="py-20 bg-white">
+      <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="text-center mb-16">
                 <span className="text-brand-green font-bold tracking-widest uppercase text-sm mb-4 block">Our Commitment</span>

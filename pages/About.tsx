@@ -12,8 +12,8 @@ const About = () => {
         videoUrl="https://assets.mixkit.co/videos/preview/mixkit-fashion-designer-working-on-a-dress-4197-large.mp4"
       />
 
-      {/* 1. Overview Section */}
-      <section id="overview" className="py-20 md:py-32 bg-white">
+      {/* 1. Overview Section - Full Screen */}
+      <section id="overview" className="min-h-screen flex flex-col justify-center py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Text */}
             <div className="text-center max-w-5xl mx-auto mb-20 animate-fade-in-up">
@@ -79,8 +79,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* 2. Design Studio Section */}
-      <section className="py-20 md:py-28 bg-gray-50">
+      {/* 2. Design Studio Section - Full Screen */}
+      <section className="min-h-screen flex flex-col justify-center py-20 md:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center md:text-left">
                 <h2 className="text-4xl font-serif font-bold text-brand-navy mb-4 uppercase tracking-wide">Design Studio</h2>
@@ -142,8 +142,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* 3. Our People & Presence */}
-      <section id="presence" className="py-20 md:py-28 bg-white">
+      {/* 3. Our People & Presence - Full Screen */}
+      <section id="presence" className="min-h-screen flex flex-col justify-center py-20 md:py-28 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
                   <h2 className="text-4xl font-serif font-bold text-brand-navy uppercase mb-4">Our Global Presence</h2>
@@ -203,8 +203,8 @@ const About = () => {
           </div>
       </section>
 
-      {/* 4. Mission & Vision */}
-      <section id="mission" className="py-24 bg-white relative overflow-hidden">
+      {/* 4. Mission & Vision - Full Screen */}
+      <section id="mission" className="min-h-screen flex flex-col justify-center py-24 bg-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-50 to-white"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -238,8 +238,8 @@ const About = () => {
           </div>
       </section>
 
-      {/* 5. Services Grid */}
-      <section id="services" className="py-24 bg-brand-light">
+      {/* 5. Services Grid - Full Screen */}
+      <section id="services" className="min-h-screen flex flex-col justify-center py-24 bg-brand-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-20">
                   <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-4">Our Services</h2>
@@ -269,8 +269,8 @@ const About = () => {
           </div>
       </section>
 
-      {/* 6. Values & Philosophy */}
-      <section id="values" className="py-24 bg-brand-navy text-white relative">
+      {/* 6. Values & Philosophy - Full Screen */}
+      <section id="values" className="min-h-screen flex flex-col justify-center py-24 bg-brand-navy text-white relative">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div className="text-center mb-20">

@@ -11,7 +11,7 @@ const HeroVideo: React.FC<HeroVideoProps> = ({ title, subtitle, videoUrl }) => {
   const source = videoUrl || "https://assets.mixkit.co/videos/preview/mixkit-hands-working-on-a-sewing-machine-35070-large.mp4";
 
   return (
-    <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-brand-navy">
+    <div className="relative h-screen w-full overflow-hidden bg-brand-navy">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         autoPlay

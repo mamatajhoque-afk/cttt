@@ -12,7 +12,7 @@ const MarketIntel = () => {
         videoUrl="https://assets.mixkit.co/videos/preview/mixkit-young-woman-checking-her-designs-3932-large.mp4"
       />
       
-      <section className="py-20 bg-white">
+      <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 animate-fade-in-up">
                 <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Fashion is no longer just fabric — it's a Language!</h2>

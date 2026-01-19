@@ -11,7 +11,7 @@ const Manufacturing = () => {
         videoUrl="https://assets.mixkit.co/videos/preview/mixkit-manufacturing-factory-workers-1647-large.mp4"
       />
       
-      <section className="py-20 bg-white">
+      <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Mission Section */}

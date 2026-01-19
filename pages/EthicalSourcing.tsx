@@ -11,7 +11,7 @@ const EthicalSourcing = () => {
         videoUrl="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-tailor-working-with-cloth-4214-large.mp4"
       />
        
-       <section className="py-20 bg-white">
+       <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            {/* Intro */}
            <div className="text-center mb-20 animate-fade-in-up">
