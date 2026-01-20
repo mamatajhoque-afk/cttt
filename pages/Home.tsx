@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Users, Award, Leaf, CheckCircle } from 'lucide-react';
 
 const Home = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const sliderImages = [
+    "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=2000&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop", 
+    "https://images.unsplash.com/photo-1529139574466-a302d27460ae?q=80&w=2000&auto=format&fit=crop"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 4000); // Change slide every 4 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="overflow-x-hidden">
       {/* 
@@ -73,8 +88,8 @@ const Home = () => {
 
             {/* Commitment Quote */}
             <div className="w-full py-16 border-y border-gray-100 bg-gray-50/50">
-                <div className="max-w-6xl mx-auto px-4">
-                    <p className="text-2xl md:text-4xl font-serif italic text-brand-navy font-bold text-center leading-relaxed">
+                <div className="w-full px-4">
+                    <p className="font-serif italic text-brand-navy font-bold text-center leading-normal text-xl md:text-[2.5vw]">
                         "Our commitment to fashion progression spans market intelligence, trend analysis, innovative design and R&D."
                     </p>
                 </div>
@@ -89,44 +104,47 @@ const Home = () => {
                  />
             </div>
 
-            {/* Remaining Content - FULL WIDTH */}
-            <div className="w-full space-y-16 text-left">
-                <div>
-                    <h4 className="font-bold text-brand-navy text-2xl md:text-4xl mb-8 leading-tight">
-                        Trend-Driven, Ethically Sourced, Trusted & Traceable – <br/><span className="text-brand-blue">Your Fashion Manufacturing Partner.</span>
+            {/* Remaining Content - Updated to match design request */}
+            <div className="w-full text-left">
+                <div className="mb-8">
+                    <h4 className="font-bold text-black text-xl md:text-2xl mb-4">
+                        Trend-Driven, Ethically Sourced, Trusted & Traceable – Your Fashion Manufacturing Partner-
                     </h4>
-                    <p className="text-lg md:text-xl text-gray-600 leading-relaxed text-justify font-light">
-                        We collaborate with globally compliant manufacturers to ensure traceability, quality, and process control. Our design studios in London and Dhaka blend Global creativity with local talent, focusing on R&D, trend-driven products, and iconic licensed characters like Disney and others. Onsite inspections and full logistics support highlight our commitment to responsible, innovative manufacturing.
+                    <p className="text-sm md:text-base text-gray-500 leading-relaxed font-normal text-justify md:text-left">
+                        We collaborate with globally compliant manufacturers to ensure traceability, quality, and process control. Our design studios in London and Dhaka blend Global Creativity with local talent, focusing on R&D, trend-driven products, and iconic licensed characters like Disney and others. Onsite inspections and full logistics support highlight our commitment to responsible, innovative manufacturing.
                     </p>
                 </div>
                 
-                <div className="bg-[#eaf2ff] p-12 md:p-20 border-l-[12px] border-brand-blue rounded-r-3xl shadow-lg">
-                    <p className="text-brand-navy font-bold text-xl md:text-3xl italic text-center leading-relaxed">
+                <div className="w-full bg-[#eeffff] py-10 px-4 mb-10">
+                    <p className="text-brand-navy font-bold text-lg md:text-2xl text-center font-serif">
                         "Ethical sourcing, sustainability, manufacturing excellence and superior service- delivers added Customer value."
                     </p>
                 </div>
 
-                <div className="pt-8 text-center">
-                    <Link to="/about" className="inline-block border-2 border-brand-navy px-12 py-4 text-base md:text-lg font-bold uppercase tracking-[0.2em] hover:bg-brand-navy hover:text-white transition duration-300 transform hover:scale-105 rounded-sm">
-                        Explore Our Story
+                <div className="text-left">
+                    <Link to="/about" className="inline-block border border-brand-green px-6 py-2 text-xs font-medium uppercase tracking-wider text-black hover:bg-brand-green hover:text-white transition duration-300 rounded-sm">
+                        Explore More
                     </Link>
                 </div>
             </div>
         </div>
       </section>
 
-      {/* 5. Fashion Evolution - Full Screen */}
-      <section className="min-h-screen flex flex-col justify-center py-20 bg-gray-50">
-        <div className="max-w-[90%] mx-auto px-4">
-            <h2 className="text-4xl md:text-6xl font-serif font-bold text-brand-navy mb-4">Fashion Evolution</h2>
-            <p className="text-xl text-brand-green italic mb-8">Where Trends Begin — Designing Fashion in Motion... !</p>
-            <p className="text-base md:text-lg text-gray-500 mb-16 max-w-5xl leading-relaxed">
-                Embark on the journey of Fashion Evolution — where trendsetting design and cutting-edge technology shape the future of style. At COUTURETEX, fashion speaks the language of shifting identities, where imagination meets science and tradition blends with innovation.
-            </p>
+      {/* 5. Fashion Evolution - Updated to match new requirements */}
+      <section className="py-20 bg-[#e6e6e6]">
+        <div className="max-w-[95%] mx-auto px-4">
+            <div className="mb-12 text-left w-full">
+                 <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Fashion Evolution</h2>
+                 <p className="text-sm font-bold text-gray-800 italic mb-4">Where Trends Begin — Designing Fashion in Motion... !!</p>
+                 <p className="text-base md:text-lg text-gray-600 w-full leading-relaxed text-justify">
+                    Embark on the journey of Fashion Evolution — where trendsetting design and cutting-edge technology shape the future of style. At COUTURETEX, fashion speaks the language of shifting identities, where imagination meets science and tradition blends with innovation.
+                 </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                <div className="bg-white p-12 rounded-2xl shadow-xl h-full flex flex-col justify-center border border-gray-100">
-                    <ul className="space-y-6 text-lg md:text-xl font-semibold text-brand-navy">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Left Side Content - Bullets & Button */}
+                <div className="flex flex-col justify-center">
+                     <ul className="space-y-6 text-lg md:text-2xl font-bold text-gray-800 mb-12">
                         {[
                             "Bold minds. Breakthrough fashion.",
                             "Timeless style, built for tomorrow.",
@@ -134,21 +152,46 @@ const Home = () => {
                             "Next-gen materials. Zero waste. Pure impact.",
                             "Evolution isn't a trend — it's our blueprint."
                         ].map((item, i) => (
-                            <li key={i} className="flex items-center group">
-                                <span className="w-3 h-3 bg-brand-green rounded-full mr-4 flex-shrink-0 group-hover:scale-150 transition-transform"></span>
-                                <span className="group-hover:translate-x-2 transition-transform">{item}</span>
+                            <li key={i} className="flex items-start">
+                                <span className="mr-3 transform scale-125 text-[#1e3a8a]">•</span>
+                                <span>{item}</span>
                             </li>
                         ))}
                     </ul>
-                    <div className="mt-12">
-                        <Link to="/market-intel" className="inline-block border border-gray-400 px-8 py-3 text-sm uppercase tracking-wider hover:bg-brand-navy hover:text-white hover:border-brand-navy transition bg-gray-50">
-                            Discover Intelligence
+                    <div>
+                         <Link to="/market-intel" className="inline-block border-2 border-gray-600 px-8 py-3 text-xs md:text-sm font-bold text-gray-800 hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition uppercase tracking-wider bg-transparent">
+                            Explore More
                         </Link>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 h-[600px]">
-                     <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover rounded-xl shadow-lg transform translate-y-8" alt="Fashion 1" />
-                     <img src="https://images.unsplash.com/photo-1529139574466-a302d27460ae?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover rounded-xl shadow-lg transform -translate-y-8" alt="Fashion 2" />
+
+                {/* Right Side Slider */}
+                <div className="w-full h-[600px] relative overflow-hidden shadow-2xl rounded-sm">
+                     {/* Slider Images */}
+                     {sliderImages.map((src, index) => (
+                        <div 
+                          key={index}
+                          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${currentSlide === index ? 'opacity-100' : 'opacity-0'}`}
+                        >
+                            <img src={src} className="w-full h-full object-cover" alt={`Fashion Slide ${index + 1}`} />
+                        </div>
+                     ))}
+                     
+                     {/* Overlays (Static on top of slider) */}
+                      <div className="absolute top-6 left-6 flex items-center gap-3 z-10">
+                          <div className="flex shadow-sm">
+                              <div className="bg-[#1e3a8a] w-8 h-8 flex items-center justify-center text-white font-bold text-xs">C</div>
+                              <div className="bg-[#4ade80] w-8 h-8 flex items-center justify-center text-white font-bold text-xs">T</div>
+                          </div>
+                          <span className="font-bold text-[#1e3a8a] text-lg tracking-wide bg-white/80 px-2 py-1">COUTURETEX</span>
+                      </div>
+                      
+                      <div className="absolute bottom-10 right-8 text-right z-10">
+                          <p className="text-[#1e3a8a] font-bold text-sm italic bg-white/80 px-2 inline-block mb-1">The World of Fashion-</p>
+                          <div className="bg-white/80 px-4 py-2">
+                            <p className="text-[#1e3a8a] font-bold text-4xl italic leading-none font-serif">Ever-Flowing<br/>Ever-Growing..</p>
+                          </div>
+                      </div>
                 </div>
             </div>
         </div>
