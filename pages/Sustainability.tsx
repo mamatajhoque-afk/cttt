@@ -4,93 +4,121 @@ import { Leaf, Recycle, Heart } from 'lucide-react';
 
 const Sustainability = () => {
   return (
-    <div>
-      {/* Unique Video: Nature/Forest */}
+    <div className="bg-[#f4fff4]">
+      {/* 1. Hero Video Section */}
       <HeroVideo 
         title="Sustainability" 
         subtitle="Revive the Earth, Renew Our Future"
         videoUrl="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"
       />
       
-      <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-16">
-                <span className="text-brand-green font-bold tracking-widest uppercase text-sm mb-4 block">Our Commitment</span>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Building A Greener Future Together</h2>
-                <div className="w-24 h-1 bg-brand-green mx-auto"></div>
-           </div>
-           
-           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-               <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px] group">
-                   <img 
-                    src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2213&auto=format&fit=crop" 
-                    alt="Sustainable Fashion" 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                   />
-                   <div className="absolute inset-0 bg-gradient-to-t from-brand-green/20 to-transparent"></div>
-               </div>
-               <div className="space-y-8">
-                   <h3 className="text-2xl font-bold text-brand-navy">Transformative Potential of Sustainable Fashion</h3>
-                   <p className="text-lg text-gray-600 leading-relaxed text-justify">
-                       We believe in the power of sustainable fashion. Committed to sustainability, our operations focus on positive environmental and social outcomes, from sourcing to manufacturing. We act as stewards of the environment, ensuring that our footprint is one of restoration, not destruction.
-                   </p>
-                   <div className="bg-[#f0f9f0] p-8 rounded-xl border-l-8 border-brand-green shadow-sm">
-                       <div className="flex items-center gap-3 mb-3">
-                            <Leaf className="text-brand-green w-6 h-6" />
-                            <h3 className="font-bold text-brand-navy text-lg">Environmental Responsibility</h3>
-                       </div>
-                       <p className="text-gray-700">
-                           Our growth strategy revolves around environmental responsibility. We prioritize sourcing eco-friendly, circular, sustainable, and recycled materials to close the loop on fashion waste.
-                       </p>
-                   </div>
-               </div>
-           </div>
+      {/* 2. Main Content Section - Matching the reference image exactly */}
+      <section className="py-24 px-4 lg:px-12 max-w-[1400px] mx-auto overflow-hidden">
+        <div className="relative">
+          
+          {/* Top Row: Title/Text and Image 1 */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start mb-20">
+            <div className="pt-10">
+              <h2 className="text-5xl md:text-6xl font-bold text-[#88c057] mb-8">Sustainability</h2>
+              <div className="space-y-6 max-w-xl">
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  Our operations are guided by a vision of achieving social and ecological equilibrium, where the well-being of both humanity and the environment are prioritized and sustained.
+                </p>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  Ethically sourcing products and nurturing sustainability are fundamental to our mission, ensuring equitable treatment for workers and actively reducing our environmental impact.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex justify-end">
+              <div className="w-full max-w-[500px] aspect-square rounded-sm overflow-hidden shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop" 
+                  alt="Forest Canopy" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
 
-           <div className="py-16 bg-brand-light rounded-3xl px-8 mb-24 relative overflow-hidden">
-               <div className="absolute top-0 left-0 w-32 h-32 bg-brand-green/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-               <div className="relative z-10">
-                   <h3 className="text-3xl font-serif font-bold text-brand-navy mb-12 text-center">Partnering for a Sustainable and Greener Future</h3>
-                   <div className="grid md:grid-cols-3 gap-8">
-                       <div className="bg-white p-8 rounded-xl shadow-lg text-center hover:-translate-y-2 transition-transform duration-300">
-                           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-green">
-                               <Leaf className="w-8 h-8" />
-                           </div>
-                           <h4 className="font-bold text-brand-navy text-xl mb-2">Conscious Fashion</h4>
-                           <p className="text-sm text-gray-500 uppercase tracking-wider">Eco-friendly & Green</p>
-                       </div>
-                       <div className="bg-white p-8 rounded-xl shadow-lg text-center hover:-translate-y-2 transition-transform duration-300">
-                           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-blue">
-                               <Recycle className="w-8 h-8" />
-                           </div>
-                           <h4 className="font-bold text-brand-navy text-xl mb-2">Circular Fashion</h4>
-                           <p className="text-sm text-gray-500 uppercase tracking-wider">Upcycled & Recyclable</p>
-                       </div>
-                       <div className="bg-white p-8 rounded-xl shadow-lg text-center hover:-translate-y-2 transition-transform duration-300">
-                           <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 text-pink-500">
-                               <Heart className="w-8 h-8" />
-                           </div>
-                           <h4 className="font-bold text-brand-navy text-xl mb-2">Sustainable Fashion</h4>
-                           <p className="text-sm text-gray-500 uppercase tracking-wider">Vegan & Cruelty-free</p>
-                       </div>
-                   </div>
-               </div>
-           </div>
+          {/* Middle Banner: Overlapping Quote Banner */}
+          <div className="relative z-10 -mt-32 md:-mt-48 mb-20 flex justify-center lg:justify-start lg:ml-[20%]">
+            <div className="relative w-full max-w-2xl aspect-[21/9] rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+              <img 
+                src="https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?q=80&w=2000&auto=format&fit=crop" 
+                alt="Beach Stones" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
+                <p className="text-white font-bold text-lg md:text-2xl leading-tight">
+                  Sustainability is not only a Tagline, it's a life style<br/>and at the core of our business operation.
+                </p>
+              </div>
+            </div>
+          </div>
 
-           <div className="text-center">
-               <h3 className="text-3xl font-serif font-bold text-brand-navy mb-6">Driving Eco-Friendly Fashion</h3>
-               <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-2xl group">
-                    <img 
-                        src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop" 
-                        alt="Eco Banner" 
-                        className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" 
-                    />
-                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                         <p className="text-white font-serif text-3xl italic">"Preserving nature's beauty for the next generation"</p>
-                    </div>
-               </div>
-           </div>
+          {/* Bottom Row: Image 3 and Bottom Text */}
+          <div className="grid lg:grid-cols-2 gap-8 items-end">
+            <div className="lg:pl-10">
+              <div className="w-full max-w-[500px] aspect-[4/3] rounded-sm overflow-hidden shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1976&auto=format&fit=crop" 
+                  alt="Lone Tree" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            <div className="pb-10 lg:pl-10">
+              <div className="space-y-6 max-w-xl">
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  Our growth focuses on environmental responsibility, with an emphasis on circular thinking, emission reduction, water conservation, and responsible consumption. We collaborate with partners committed to ethical sourcing and environmental compliance.
+                </p>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  Sustainability is at the core of our growth plan, influencing every decision and action we take, as we collaborate with the likeminded dedicated partners!!
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
+
+      {/* 3. Icons Section */}
+      <section className="py-20 bg-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12">
+               <div className="text-center group p-8 hover:bg-[#f4fff4] transition-colors rounded-2xl">
+                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-all">
+                       <Leaf className="w-8 h-8" />
+                   </div>
+                   <h4 className="font-bold text-brand-navy text-xl mb-3">Eco-friendly</h4>
+                   <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Conscious Fashion</p>
+               </div>
+               <div className="text-center group p-8 hover:bg-[#f4fff4] transition-colors rounded-2xl">
+                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                       <Recycle className="w-8 h-8" />
+                   </div>
+                   <h4 className="font-bold text-brand-navy text-xl mb-3">Recyclable</h4>
+                   <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Circular Fashion</p>
+               </div>
+               <div className="text-center group p-8 hover:bg-[#f4fff4] transition-colors rounded-2xl">
+                   <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 text-pink-500 group-hover:bg-pink-500 group-hover:text-white transition-all">
+                       <Heart className="w-8 h-8" />
+                   </div>
+                   <h4 className="font-bold text-brand-navy text-xl mb-3">Sustainable</h4>
+                   <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Vegan & Ethical</p>
+               </div>
+          </div>
+      </section>
+
+      {/* 4. Footer Banner - Font Reduced and ensured single line */}
+      <div className="bg-brand-green py-12 text-center text-white px-4">
+          <div className="max-w-7xl mx-auto">
+             <p className="text-xl md:text-2xl lg:text-3xl font-serif italic font-bold tracking-tight leading-none drop-shadow-lg whitespace-nowrap overflow-hidden text-ellipsis">
+                "The Earth does not belong to us, We belong to the Earth!"
+             </p>
+          </div>
+      </div>
     </div>
   );
 };

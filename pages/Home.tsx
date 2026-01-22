@@ -1,10 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Users, Award, Leaf, CheckCircle } from 'lucide-react';
+import { ArrowRight, Globe, Users, Award, Leaf, CheckCircle, Scissors, Package, Ship, Truck, ClipboardCheck, Layers, Settings, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Internal Component for the Product Slider Card
+const ProductCard = ({ product }: { product: { id: string, name: string, images: string[] } }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
+    }, 3500); // Slide every 3.5 seconds
+    return () => clearInterval(interval);
+  }, [product.images.length]);
+
+  return (
+    <div className="relative w-full aspect-[3/4] overflow-hidden rounded-sm shadow-md group bg-gray-100">
+      {/* Image Slider Container */}
+      <div className="absolute inset-0 w-full h-full">
+        {product.images.map((img, index) => {
+          // Logic for slide positioning
+          // Active image is at 0. Previous image slides to -100%. Next/Others wait at 100%.
+          let positionClass = 'translate-x-full'; // Default: waiting on the right
+          
+          if (index === currentImageIndex) {
+            positionClass = 'translate-x-0 z-10'; // Active: center
+          } else if (
+            index === (currentImageIndex - 1 + product.images.length) % product.images.length
+          ) {
+            positionClass = '-translate-x-full z-0'; // Previous: moved to left
+          }
+
+          return (
+            <img
+              key={index}
+              src={img}
+              alt={`${product.name} view ${index + 1}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out ${positionClass}`}
+            />
+          );
+        })}
+      </div>
+
+      {/* Overlay - Gradient for better text visibility */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+
+      {/* Clickable Overlay Name */}
+      <div className="absolute inset-x-0 bottom-0 flex justify-center pb-6 z-20">
+        <Link 
+          to={`/products#${product.id}`}
+          className="bg-black/40 backdrop-blur-md border border-white/20 text-white font-bold uppercase tracking-wider px-8 py-3 text-sm hover:bg-brand-blue hover:border-brand-blue transition-all duration-300 rounded-sm"
+        >
+          {product.name}
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentAboutSlide, setCurrentAboutSlide] = useState(0);
   
   const sliderImages = [
     "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=2000&auto=format&fit=crop",
@@ -31,6 +87,132 @@ const Home = () => {
     }
   ];
 
+  const productCategories = [
+    { 
+      id: 'knit',
+      name: 'Knit', 
+      images: [
+        'https://images.unsplash.com/photo-1620799140408-ed5341cd2431?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'woven',
+      name: 'Woven', 
+      images: [
+        'https://images.unsplash.com/photo-1520218508822-998633d997a6?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'nightwear',
+      name: 'Nightwear', 
+      images: [
+        'https://images.unsplash.com/photo-1571513722275-4b41940954b3?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1512413316925-fd4b93f31521?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1596356453261-0d265ae2520a?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'denim',
+      name: 'Denim', 
+      images: [
+        'https://images.unsplash.com/photo-1542272617-08f08630329f?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1582552938357-32b906df40cb?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'outerwear',
+      name: 'Outer Wear', 
+      images: [
+        'https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1551028919-ac66c9a3d683?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'lingerie',
+      name: 'Lingerie', 
+      images: [
+        'https://images.unsplash.com/photo-1596482103565-d603a1163152?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1616149562385-1d84e79478bb?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1546200231-c0353c829e24?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'activewear',
+      name: 'Activewear', 
+      images: [
+        'https://images.unsplash.com/photo-1518459031867-a89b944bffe4?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'hometextile',
+      name: 'Home Textile', 
+      images: [
+        'https://images.unsplash.com/photo-1522771753035-4a503f3a6352?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1505693416388-b03467220886?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'uniform',
+      name: 'Uniform', 
+      images: [
+        'https://images.unsplash.com/photo-1584467541268-b040f83be3dd?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'sweater',
+      name: 'Sweater', 
+      images: [
+        'https://images.unsplash.com/photo-1611090159492-3866d936e788?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1572495532056-8583af1cbae0?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1453486030486-0a5ffcd82cd9?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'disney',
+      name: 'License Products', 
+      images: [
+        'https://images.unsplash.com/photo-1535572290543-523a3d6e1b0c?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1515488042361-25f468213b6e?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+    { 
+      id: 'jute',
+      name: 'Jute & Crafts', 
+      images: [
+        'https://images.unsplash.com/photo-1550974797-0dc2a420952d?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1617325247661-675ab4b64ae4?q=80&w=2000&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1544367563-12123d832e34?q=80&w=2000&auto=format&fit=crop'
+      ]
+    },
+  ];
+
+  const aboutSliderImages = [
+    "https://images.unsplash.com/photo-1596700874052-b8833917d05c?q=80&w=2070&auto=format&fit=crop", // Traceability Diagram style
+    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop", // Factory
+    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop", // Fabric
+    "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2274&auto=format&fit=crop", // Showroom
+    "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=2000&auto=format&fit=crop", // Knit
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop", // Data
+    "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=2070&auto=format&fit=crop", // Office
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2340&auto=format&fit=crop", // Planning
+    "https://images.unsplash.com/photo-1529139574466-a302d27460ae?q=80&w=2000&auto=format&fit=crop", // Fashion
+    "https://images.unsplash.com/photo-1605256585681-455837661b18?q=80&w=2070&auto=format&fit=crop", // Sewing
+    "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2000&auto=format&fit=crop", // Active
+    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=2000&auto=format&fit=crop"  // Texture
+  ];
+
   const logos = [
     { name: 'RSC', url: 'https://seeklogo.com/images/R/rsc-logo-7B8B1A2A6C-seeklogo.com.png' },
     { name: 'BetterWork', url: 'https://betterwork.org/wp-content/uploads/2016/04/BW-Logo-300x100.png' },
@@ -48,6 +230,22 @@ const Home = () => {
     }, 4000); // Change slide every 4 seconds
     return () => clearInterval(timer);
   }, []);
+
+  // Auto slide for About Section
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentAboutSlide((prev) => (prev + 1) % aboutSliderImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextAboutSlide = () => {
+    setCurrentAboutSlide((prev) => (prev + 1) % aboutSliderImages.length);
+  };
+
+  const prevAboutSlide = () => {
+    setCurrentAboutSlide((prev) => (prev - 1 + aboutSliderImages.length) % aboutSliderImages.length);
+  };
 
   return (
     <div className="overflow-x-hidden">
@@ -280,8 +478,8 @@ const Home = () => {
           </div>
       </section>
 
-      {/* 7. Ethical & Responsive Sourcing - Updated to match the requested picture style */}
-      <section className="min-h-screen py-24 bg-[#f4fff4]">
+      {/* 7. Ethical & Responsive Sourcing */}
+      <section className="py-16 bg-[#f4fff4]">
           <div className="max-w-[95%] mx-auto px-4 lg:px-8">
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                   <div className="pt-10">
@@ -312,6 +510,379 @@ const Home = () => {
                   </div>
               </div>
           </div>
+      </section>
+
+      {/* 8. Sustainability Section */}
+      <section className="pt-10 pb-24 bg-[#f4fff4] overflow-hidden border-t border-gray-100">
+        <div className="max-w-[95%] mx-auto px-4 lg:px-8">
+          <div className="relative">
+            {/* Top Row */}
+            <div className="grid lg:grid-cols-2 gap-8 items-start mb-24">
+              <div>
+                <h2 className="text-4xl md:text-6xl font-bold text-[#88c057] mb-8 tracking-tight">Sustainability</h2>
+                <div className="space-y-6 max-w-xl">
+                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                    Our operations are guided by a vision of achieving social and ecological equilibrium, where the well-being of both humanity and the environment are prioritized and sustained.
+                  </p>
+                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                    Ethically sourcing products and nurturing sustainability are fundamental to our mission, ensuring equitable treatment for workers and actively reducing our environmental impact
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-end">
+                <div className="w-full max-w-[450px] aspect-square rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+                  <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop" alt="Forest" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+
+            {/* Middle Image - Stones */}
+            <div className="relative z-10 -mt-24 md:-mt-48 mb-24 flex justify-center">
+              <div className="relative w-full max-w-3xl aspect-[21/9] rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+                <img src="https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?q=80&w=2000&auto=format&fit=crop" alt="Stones" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
+                  <p className="text-white font-bold text-lg md:text-3xl leading-tight">
+                    Sustainability is not only a Tagline, it's a life style<br/>and at the core of our business operation.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Row */}
+            <div className="grid lg:grid-cols-2 gap-8 items-end">
+              <div>
+                <div className="w-full max-w-[450px] aspect-[4/3] rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+                  <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1976&auto=format&fit=crop" alt="Tree" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <div className="pb-8">
+                <div className="space-y-6 max-w-xl">
+                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                    Our growth focuses on environmental responsibility, with an emphasis on circular thinking, emission reduction, water conservation, and responsible consumption. We collaborate with partners committed to ethical sourcing and environmental compliance.
+                  </p>
+                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                    Sustainability is at the core of our growth plan, influencing every decision and action we take, as we collaborate with the likeminded dedicated partners!!
+                  </p>
+                  <Link to="/sustainability" className="inline-block border border-brand-green px-8 py-3 text-xs font-bold text-black uppercase tracking-widest hover:bg-brand-green hover:text-white transition-all shadow-sm">
+                    EXPLORE MORE
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Green Banner Quote */}
+      <div className="bg-[#88c057] py-12 text-center text-white px-4 border-t-2 border-white/20">
+          <div className="max-w-7xl mx-auto">
+             <p className="text-xl md:text-2xl lg:text-3xl font-serif italic font-bold tracking-tight leading-none drop-shadow-md whitespace-nowrap overflow-hidden text-ellipsis">
+                "The Earth does not belong to us, We belong to the Earth!"
+             </p>
+          </div>
+      </div>
+
+      {/* 10. Manufacturing Excellence */}
+       <section className="py-24 bg-[#e6e6e6]">
+        <div className="max-w-[95%] mx-auto px-4 lg:px-8">
+           {/* Top Text Block */}
+           <div className="mb-24 text-left">
+                 <h2 className="text-4xl md:text-6xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight uppercase">MANUFACTURING EXCELLENCE</h2>
+                 <p className="text-sm font-bold text-gray-800 italic mb-6">Where Expertise Ignites Precision and Artistry!!</p>
+                 <p className="text-sm md:text-base text-gray-600 leading-relaxed text-justify max-w-7xl font-medium">
+                    COUTURETEX Sourcing stands as a Cornerstone of Manufacturing excellence, where the craft transcends machinery to embody precision, safety, and empowerment. From the initial fabric cut to the final stitch, every stage reflects a commitment to surpassing industry standards, delivering garments distinguished by exceptional quality, integrity, and artistry.
+                 </p>
+           </div>
+
+           {/* Content Grid 1: Fitting/Garment */}
+           <div className="grid lg:grid-cols-12 gap-12 items-center mb-32">
+              {/* Left: Text */}
+              <div className="lg:col-span-5 text-left">
+                 <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Fitting/Garment Technical Support</h2>
+                 <p className="text-sm font-bold text-gray-800 italic mb-8">Elevating Wearability, Style and Functionality...!!</p>
+                 <p className="text-sm md:text-base text-gray-600 leading-relaxed text-justify mb-8 font-medium">
+                    Garments are designed to look stunning, fit flawlessly, and move with effortless grace. Every detail—craftsmanship, fit, and aesthetics—is meticulously refined by a dedicated in-house technical team. Personalized fitting support and technical assistance are provided to ensure expectations are exceeded, enhancing comfort, style, and functionality for greater customer satisfaction.
+                 </p>
+                 <Link to="/manufacturing" className="inline-block bg-[#1e3a8a] text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#1e3a8a]/90 transition-all shadow-xl rounded-sm">
+                    EXPLORE MORE
+                 </Link>
+              </div>
+
+              {/* Right: Single Image Area */}
+              <div className="lg:col-span-7 relative h-[500px] bg-[#f8f8f8] shadow-2xl rounded-sm overflow-hidden border-4 border-white group">
+                  <img 
+                      src="https://plus.unsplash.com/premium_photo-1664202526559-e21e9c0fb46a?q=80&w=2070&auto=format&fit=crop" 
+                      className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                      alt="Manufacturing Excellence"
+                  />
+              </div>
+           </div>
+           
+           {/* Content Grid 2: Production Control */}
+           <div className="grid lg:grid-cols-2 gap-16 items-center">
+               {/* Diagram Side (Left) - Now just an image without overlays */}
+               <div className="relative w-full aspect-[4/3] md:aspect-video bg-gray-100 rounded-sm overflow-hidden shadow-2xl border-4 border-white group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1596700874052-b8833917d05c?q=80&w=2070&auto=format&fit=crop" 
+                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" 
+                    alt="Production Control" 
+                  />
+               </div>
+
+               {/* Text Side (Right) */}
+               <div className="flex flex-col justify-center">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-4">Production Control</h2>
+                    <p className="text-black italic font-medium mb-8 text-lg">
+                        Optimizing Efficiency, Ensuring Quality, Orchestrating Excellence!!
+                    </p>
+                    <div className="space-y-6 text-gray-700 leading-relaxed text-justify font-medium text-base">
+                        <p>
+                            At the core of our production control framework are four key components: Material Requirement Planning (MRP), Capacity Planning, Production Scheduling, and Quality Control. These elements work together to ensure a seamless, efficient manufacturing process, managing everything from material sourcing to final product inspection.
+                        </p>
+                        <p>
+                            Material Requirement Planning (MRP) manages material needs to maintain optimal inventory and avoid shortages or excess.
+                        </p>
+                    </div>
+               </div>
+            </div>
+
+            {/* Content Grid 3: Capacity Planning Details */}
+           <div className="grid lg:grid-cols-2 gap-12 items-center mt-20">
+               {/* Left: Text */}
+               <div>
+                   <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify font-medium mb-8">
+                        Capacity Planning aligns production with demand to optimize resources and balance workloads. Production Scheduling organizes tasks to maximize output and minimize downtime. Quality Control upholds standards to ensure every product meets or exceeds expectations.
+                   </p>
+                   <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify font-medium mb-8">
+                        The supply chain is managed to reduce waste and boost productivity. Competitive pricing and flexible lead times are achieved through this careful oversight. Operational excellence and exceptional client value are ensured by integrating these elements
+                   </p>
+                   <Link to="/manufacturing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
+                        EXPLORE MORE
+                   </Link>
+               </div>
+               
+               {/* Right: Image */}
+               <div className="w-full h-[400px] rounded-sm overflow-hidden shadow-xl border-4 border-white">
+                   <img 
+                        src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop" 
+                        alt="Garment Factory Production" 
+                        className="w-full h-full object-cover"
+                   />
+               </div>
+           </div>
+
+           {/* Top Quote for QA */}
+           <div className="text-center mt-24 mb-12">
+                <p className="font-serif italic font-bold text-black text-lg md:text-xl tracking-wide">
+                    "Crafting Excellence: Refined Control, Flawless Garments, Excellence in Every Stitch, Efficiency in Every Step."
+                </p>
+           </div>
+
+           {/* Content Grid 4: Quality Assurance */}
+           <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
+               {/* Left: Image */}
+               <div className="w-full h-[500px] bg-gray-100 rounded-sm overflow-hidden shadow-2xl border-4 border-white relative group">
+                   <img 
+                        src="https://images.unsplash.com/photo-1576158189852-181dd0663458?q=80&w=2670&auto=format&fit=crop" 
+                        alt="Quality Assurance Team" 
+                        className="w-full h-full object-cover"
+                   />
+               </div>
+
+               {/* Right: Text */}
+               <div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Quality Assurance:</h2>
+                    <p className="text-sm font-bold text-gray-800 italic mb-8">Redefining Excellence in Craftsmanship and Enduring Durability</p>
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify mb-8 font-medium">
+                        Committed to upholding impeccable standards through rigorous quality control, we ensure every garment exceeds expectations for craftsmanship and durability. In collaboration with our partners, we apply advanced protocols— including lab testing and onsite inspections—at every stage of production, reinforcing confidence in the integrity and excellence of our products.
+                    </p>
+                    <Link to="/manufacturing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
+                        EXPLORE MORE
+                    </Link>
+               </div>
+           </div>
+           
+           {/* Fair Traceability Section - New Addition */}
+           <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
+             {/* Left: Text */}
+             <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Fair Traceability</h2>
+                <p className="text-sm font-bold text-gray-800 italic mb-8">Transparency across the Supply Chain!!</p>
+                <p className="font-bold text-gray-900 mb-6 italic text-sm md:text-base">
+                   Real-Time Updates Promote-Transparency, Ethics, and Accountability—Fostering Trust Across the Supply Chain.
+                </p>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify mb-8 font-medium">
+                   We prioritize fair traceability by providing real-time updates at every stage of the product journey—from raw material sourcing to manufacturing—ensuring ethical practices and supply chain accountability.
+                </p>
+                <Link to="/ethical-sourcing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
+                    EXPLORE MORE
+                </Link>
+             </div>
+
+             {/* Right: Picture Only */}
+             <div className="relative w-full aspect-[4/3] bg-white border-4 border-white rounded-sm overflow-hidden shadow-2xl">
+                 <img 
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Traceability Diagram"
+                    className="w-full h-full object-cover" 
+                 />
+             </div>
+           </div>
+
+           {/* Shipping And Logistics */}
+           <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Left: Image */}
+                <div className="w-full h-[400px] md:h-[500px] rounded-sm overflow-hidden shadow-2xl border-4 border-white relative group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1494412574643-35d324688b08?q=80&w=2070&auto=format&fit=crop" 
+                        alt="Shipping and Logistics" 
+                        className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                    />
+                </div>
+
+                {/* Right: Text */}
+                <div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Shipping And Logistics</h2>
+                    <p className="text-sm font-bold text-gray-800 italic mb-8">Streamlined Delivery, Global Reach!!</p>
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify mb-8 font-medium">
+                        COUTURETEX Sourcing ensures a seamless end-to-end logistics experience through our dedicated in-house shipping and logistics team. We streamline supply chain processes and manage all shipping and forwarder formalities with precision. From manufacturing facilities to global destinations, we oversee every step to guarantee efficient delivery and the highest level of customer satisfaction.
+                    </p>
+                    <Link to="/manufacturing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
+                        EXPLORE MORE
+                    </Link>
+                </div>
+           </div>
+
+           {/* New Quote Banner */}
+           <div className="mt-24 w-full bg-[#e0f7fa] py-12 px-6 text-center shadow-md border-y border-white">
+                <p className="text-[#3b6d8f] text-xl md:text-2xl font-serif italic font-bold leading-relaxed">
+                    "Manufacturing excellence is never an accident It is always the result of high intention, sincere effort, intelligent direction, and skillful execution."
+                </p>
+           </div>
+
+        </div>
+      </section>
+
+      {/* 11. Products Section */}
+      <section className="py-20 bg-gray-200">
+        <div className="max-w-[95%] mx-auto px-4">
+             <div className="text-center mb-16">
+                 <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a8a] mb-6">Products</h2>
+                 <p className="text-sm md:text-base text-gray-600 max-w-6xl mx-auto leading-relaxed font-medium">
+                    At the crossroads of innovation and style, we provide an extensive range of products to meet diverse fashion preferences, blending timeless elegance with the latest trends. Our mission is to enhance your sourcing supply chain from design to delivery. With a focus on 12 distinct categories, we tailor sourcing solutions to meet your needs effectively.
+                 </p>
+             </div>
+
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {productCategories.map((product, idx) => (
+                    <ProductCard key={idx} product={product} />
+                ))}
+             </div>
+        </div>
+      </section>
+      
+      {/* 12. Inquiry Parallax Section */}
+      <section 
+        className="relative h-[60vh] bg-fixed bg-center bg-cover flex items-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1605256585681-455837661b18?q=80&w=2070&auto=format&fit=crop')" }} 
+      >
+        <div className="absolute inset-0 bg-gray-900/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-12 w-full text-left">
+             <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 shadow-black/50 drop-shadow-lg">
+                We are eager to deliver you Superior Value
+             </h2>
+             <h3 className="text-2xl md:text-3xl font-bold text-white mb-10 shadow-black/50 drop-shadow-lg">
+                To Enquire with Us
+             </h3>
+             <a href="mailto:info@couturetex.com" className="inline-block border border-[#88c057] text-white px-8 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#88c057] transition-all bg-[#88c057]/20 backdrop-blur-sm rounded-sm">
+                CLICK HERE
+             </a>
+        </div>
+      </section>
+
+      {/* 13. All About Us - 12 Image Slider Section */}
+      <section className="py-24 bg-white border-t border-gray-100">
+        <div className="max-w-[95%] mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                
+                {/* Left Side: Text */}
+                <div className="text-left">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a8a] mb-8 font-sans">All About Us</h2>
+                    <p className="text-base text-gray-700 leading-relaxed text-justify font-medium">
+                        We believe that Fashion is not just about Clothing, it's an ever evolving statement, an expression of Identity, Culture context of time and place, perception, aspiration, creativity and innovation, value and belief of individual and community.
+                    </p>
+                </div>
+
+                {/* Right Side: Image Slider */}
+                <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-2xl group bg-[#f0f9f0]">
+                    {/* Slides Container */}
+                    <div className="relative w-full h-full">
+                        {aboutSliderImages.map((img, index) => {
+                            let positionClass = 'translate-x-full opacity-0'; 
+                            let textClass = 'opacity-0 scale-50 translate-y-10'; // Default start state for animation
+
+                            if (index === currentAboutSlide) {
+                                positionClass = 'translate-x-0 opacity-100 z-10';
+                                // Active State: Fade in, scale up to 100%, move to original Y. Added delay so it appears after image slide.
+                                textClass = 'opacity-100 scale-100 translate-y-0 transition-all duration-1000 ease-out delay-500';
+                            } else if (
+                                index === (currentAboutSlide - 1 + aboutSliderImages.length) % aboutSliderImages.length
+                            ) {
+                                positionClass = '-translate-x-full opacity-0 z-0';
+                                textClass = 'opacity-0 scale-50 translate-y-10 transition-all duration-300';
+                            } else {
+                                textClass = 'opacity-0 scale-50 translate-y-10 transition-all duration-300';
+                            }
+
+                            return (
+                                <div 
+                                    key={index}
+                                    className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out ${positionClass}`}
+                                >
+                                    <img 
+                                        src={img} 
+                                        alt={`About Us Slide ${index + 1}`} 
+                                        className="w-full h-full object-cover"
+                                    />
+                                    {/* Overlay Text with Animation */}
+                                    <div className={`absolute bottom-10 left-10 text-white drop-shadow-md z-20 ${textClass}`}>
+                                        <h3 className="text-3xl font-bold mb-2">Fair Traceability</h3>
+                                        <p className="text-sm font-medium">Innovating Transparency, Fair Traceability in Action....</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Navigation Arrows */}
+                    <button 
+                        onClick={prevAboutSlide}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-transparent hover:bg-black/20 text-white p-2 rounded-full transition-all z-20"
+                    >
+                        <ChevronLeft className="w-8 h-8" />
+                    </button>
+                    <button 
+                        onClick={nextAboutSlide}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-transparent hover:bg-black/20 text-white p-2 rounded-full transition-all z-20"
+                    >
+                        <ChevronRight className="w-8 h-8" />
+                    </button>
+
+                    {/* Dot Indicators */}
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
+                        {aboutSliderImages.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => setCurrentAboutSlide(idx)}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    currentAboutSlide === idx ? 'bg-black w-4' : 'bg-gray-400/50 hover:bg-white'
+                                }`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
       </section>
     </div>
   );
