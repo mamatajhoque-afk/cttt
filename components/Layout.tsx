@@ -69,16 +69,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            {/* Logo Placeholder */}
-            <div className="flex items-center gap-2">
-                <div className="bg-brand-green w-10 h-10 flex items-center justify-center rounded-br-xl rounded-tl-xl">
-                    <span className="text-white font-bold text-xl">CT</span>
-                </div>
-                <div className="flex flex-col">
-                    <span className="text-white font-bold text-lg leading-none tracking-wide">COUTURETEX</span>
-                    <span className="text-gray-300 text-xs tracking-widest">SOURCING LIMITED</span>
-                </div>
-            </div>
+            {/* Replaced Logo with Image - White version for Navbar */}
+            <img 
+                src="https://placehold.co/220x60/transparent/white?text=apparelbd" 
+                alt="ApparelBD" 
+                className="h-10 md:h-12 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Menu */}
@@ -170,15 +166,14 @@ const Footer = () => {
           
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
-             <div className="flex items-center gap-3 mb-6">
-                <div className="bg-brand-green w-12 h-12 flex items-center justify-center rounded-br-xl rounded-tl-xl shadow-md">
-                    <span className="text-white font-bold text-lg">CT</span>
-                </div>
-                <div className="flex flex-col">
-                    <span className="text-brand-navy font-bold text-2xl leading-none">COUTURETEX</span>
-                    <span className="text-gray-500 text-xs tracking-[0.25em] font-medium mt-1">SOURCING LIMITED</span>
-                </div>
-            </div>
+             {/* Updated Logo in Footer - Dark version */}
+             <div className="mb-6">
+                <img 
+                    src="https://placehold.co/220x60/transparent/0a192f?text=apparelbd" 
+                    alt="ApparelBD" 
+                    className="h-12 md:h-16 w-auto object-contain"
+                />
+             </div>
             <h3 className="font-bold text-xl border-b-2 border-brand-green inline-block pb-1">All About Us</h3>
             <p className="text-base text-gray-700 leading-relaxed text-justify">
               We believe that fashion is not just about clothing, it's an ever evolving statement, an expression of Identity. Culture context of time and place, perception, aspiration, creativity and innovation, value and belief of individual and community.
