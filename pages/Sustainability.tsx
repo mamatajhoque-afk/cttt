@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { Leaf, Recycle, Heart } from 'lucide-react';
+import { ASSETS } from '../config/assets';
 
 const Sustainability = () => {
   return (
@@ -9,7 +10,7 @@ const Sustainability = () => {
       <HeroVideo 
         title="Sustainability" 
         subtitle="Revive the Earth, Renew Our Future"
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4"
+        videoUrl={ASSETS.videos.sustainability}
       />
       
       {/* 2. Main Content Section - Matching the reference image exactly */}

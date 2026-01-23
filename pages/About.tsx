@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { Target, Eye, Heart, BarChart, Users, Globe, Leaf, CheckCircle, Lightbulb, TrendingUp } from 'lucide-react';
+import { ASSETS } from '../config/assets';
 
 const About = () => {
   return (
@@ -9,7 +10,7 @@ const About = () => {
       <HeroVideo 
         title="Our Story & Vision" 
         subtitle="Reliable Strategic, Sustainable and Ethical Global Sourcing Partner!!"
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-fashion-designer-working-on-a-dress-4197-large.mp4"
+        videoUrl={ASSETS.videos.about}
       />
 
       {/* 2. Overview Section - Collage Layout */}

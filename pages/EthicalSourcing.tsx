@@ -2,6 +2,7 @@ import React from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { ShieldCheck, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ASSETS } from '../config/assets';
 
 const EthicalSourcing = () => {
   const logos = [
@@ -21,7 +22,7 @@ const EthicalSourcing = () => {
       <HeroVideo 
         title="Ethical and Responsive Sourcing" 
         subtitle="Where Fashion Meets Integrity"
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-tailor-working-with-cloth-4214-large.mp4"
+        videoUrl={ASSETS.videos.ethical}
       />
        
       <section className="min-h-screen py-20 bg-[#f4fff4]">

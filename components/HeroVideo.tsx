@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface HeroVideoProps {
   title: string;
@@ -7,20 +7,32 @@ interface HeroVideoProps {
 }
 
 const HeroVideo: React.FC<HeroVideoProps> = ({ title, subtitle, videoUrl }) => {
-  // Default fallback video if none provided
-  const source = videoUrl || "https://assets.mixkit.co/videos/preview/mixkit-hands-working-on-a-sewing-machine-35070-large.mp4";
+  // Default fallback video if none provided or if local file fails
+  const DEFAULT_VIDEO = "https://assets.mixkit.co/videos/preview/mixkit-hands-working-on-a-sewing-machine-35070-large.mp4";
+  
+  const [currentSrc, setCurrentSrc] = useState(videoUrl || DEFAULT_VIDEO);
+
+  const handleError = () => {
+    // If the custom video fails (e.g., file not found in public folder yet), revert to default
+    if (currentSrc !== DEFAULT_VIDEO) {
+      console.warn(`Video not found at ${currentSrc}. Falling back to default.`);
+      setCurrentSrc(DEFAULT_VIDEO);
+    }
+  };
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-brand-navy">
       <video
+        key={currentSrc} // Key forces re-render if src changes
         className="absolute top-0 left-0 w-full h-full object-cover"
         autoPlay
         muted
         loop
         playsInline
         poster="https://picsum.photos/1920/1080?grayscale"
+        onError={handleError}
       >
-        <source src={source} type="video/mp4" />
+        <source src={currentSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       

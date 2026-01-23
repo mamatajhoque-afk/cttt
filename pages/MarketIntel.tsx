@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { Lightbulb, TrendingUp, Users, Eye } from 'lucide-react';
+import { ASSETS } from '../config/assets';
 
 const MarketIntel = () => {
   return (
@@ -9,7 +10,7 @@ const MarketIntel = () => {
       <HeroVideo 
         title="Market Intel Design" 
         subtitle="Fashion Evolution - Redefining Style in Motion"
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-young-woman-checking-her-designs-3932-large.mp4"
+        videoUrl={ASSETS.videos.marketIntel}
       />
       
       <section className="min-h-screen flex flex-col justify-center py-20 bg-white">

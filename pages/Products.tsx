@@ -1,5 +1,6 @@
 import React from 'react';
 import HeroVideo from '../components/HeroVideo';
+import { ASSETS } from '../config/assets';
 
 interface ProductSectionProps {
   id: string;
@@ -46,13 +47,13 @@ const Products = () => {
   return (
     <div>
       {/* 
-        Using a different video URL than Home to ensure uniqueness.
+        Using centralized video config
         Video: Close up of fabric texture/hands feeling material 
       */}
       <HeroVideo 
         title="Our Product Lines" 
         subtitle="Diversified, High-Quality, and Wide-Ranging Product Categories"
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-hands-feeling-the-fabric-of-clothes-4216-large.mp4"
+        videoUrl={ASSETS.videos.products}
       />
       
       <div className="bg-white min-h-screen">

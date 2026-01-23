@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { Settings, CheckCircle, Shield, Truck, Zap, PenTool, Users } from 'lucide-react';
+import { ASSETS } from '../config/assets';
 
 const Manufacturing = () => {
   return (
@@ -8,7 +9,7 @@ const Manufacturing = () => {
       <HeroVideo 
         title="Manufacturing Excellence" 
         subtitle="Where Excellence is Crafted into Every Stitch"
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-manufacturing-factory-workers-1647-large.mp4"
+        videoUrl={ASSETS.videos.manufacturing}
       />
       
       <section className="min-h-screen flex flex-col justify-center py-20 bg-white">
