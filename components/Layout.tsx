@@ -71,7 +71,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
             {/* Logo Image - Real colors (removed white filter) */}
             <img 
-                src="/apparelbd_logo.png" 
+                src={import.meta.env.BASE_URL + 'apparelbd_logo.png'}
                 alt="ApparelBD Logo" 
                 className="h-10 md:h-12 w-auto object-contain"
             />
