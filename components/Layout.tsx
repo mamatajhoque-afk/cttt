@@ -71,7 +71,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
             {/* Logo Image - Real colors (removed white filter) */}
             <img 
-                src="/logos/apparelbd_logo.png" 
+                src="/apparelbd_logo.png" 
                 alt="ApparelBD Logo" 
                 className="h-10 md:h-12 w-auto object-contain"
             />
@@ -169,7 +169,7 @@ const Footer = () => {
              {/* Logo in Footer - Original Colors */}
              <div className="mb-6">
                 <img 
-                    src="/logos/apparelbd_logo.png" 
+                    src="/apparelbd_logo.png" 
                     alt="ApparelBD Logo" 
                     className="h-12 md:h-16 w-auto object-contain"
                 />

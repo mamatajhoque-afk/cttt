@@ -427,7 +427,7 @@ const Home = () => {
                        ))}
                         <div className="absolute top-6 left-6 flex items-center gap-3 z-10 bg-white/80 p-2 rounded-sm shadow-sm">
                             <img 
-                                src="/logos/apparelbd_logo.png" 
+                                src="/apparelbd_logo.png" 
                                 alt="CoutureTex" 
                                 className="h-10 w-auto object-contain"
                             />
