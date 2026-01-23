@@ -66,14 +66,14 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-brand-navy shadow-lg py-2' : 'bg-transparent py-4'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            {/* Logo Image - White filter for dark navbar */}
+            {/* Logo Image - Real colors (removed white filter) */}
             <img 
                 src="/logos/apparelbd_logo.png" 
                 alt="ApparelBD Logo" 
-                className="h-10 md:h-12 w-auto object-contain brightness-0 invert"
+                className="h-10 md:h-12 w-auto object-contain"
             />
           </div>
 

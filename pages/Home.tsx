@@ -342,7 +342,7 @@ const Home = () => {
             <FadeInSection>
               <div className="w-full py-16 border-y border-gray-100 bg-gray-50/50">
                   <div className="w-full px-4">
-                      <p className="font-serif italic text-brand-navy font-bold text-center leading-normal text-xl md:text-[2.5vw]">
+                      <p className="font-serif italic text-brand-navy font-bold text-center leading-normal text-lg md:text-2xl">
                           "Our commitment to fashion progression spans market intelligence, trend analysis, innovative design and R&D."
                       </p>
                   </div>
