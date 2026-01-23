@@ -74,24 +74,7 @@ const Home = () => {
     "https://images.unsplash.com/photo-1529139574466-a302d27460ae?q=80&w=2000&auto=format&fit=crop"
   ];
 
-  const galleryImages = [
-    {
-      url: "https://images.unsplash.com/photo-1544551763-47a0159f9234?q=80&w=2070&auto=format&fit=crop",
-      quote: "Fashion is not static; it's an ever-evolving art form. To stay ahead, we must embrace change and innovation."
-    },
-    {
-      url: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=2070&auto=format&fit=crop",
-      quote: ""
-    },
-    {
-      url: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2274&auto=format&fit=crop",
-      quote: ""
-    },
-    {
-      url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop",
-      quote: ""
-    }
-  ];
+  // Gallery images array removed as it is no longer used
 
   const productCategories = [
     { 
@@ -402,7 +385,7 @@ const Home = () => {
       </section>
 
       {/* 6. Market Intel Design */}
-      <section className="py-20 bg-[#f3f4f6]">
+      <section className="pt-20 pb-0 bg-[#f3f4f6]">
           <div className="max-w-[95%] mx-auto px-4">
               <div className="mb-12">
                   <h2 className="text-4xl font-bold text-[#1e3a8a] uppercase tracking-tight mb-1">MARKET INTEL DESIGN</h2>
@@ -461,27 +444,25 @@ const Home = () => {
                   </div>
               </div>
 
-              <div className="mt-20 pt-10 border-t border-gray-200 text-left">
+              <div className="mt-20 pt-10 pb-20 border-t border-gray-200 text-left">
                   <Link to="/market-intel" className="inline-block border border-brand-green px-6 py-1.5 text-[10px] font-bold text-gray-700 hover:bg-brand-green hover:text-white transition uppercase tracking-widest rounded-sm">
                       EXPLORE MORE
                   </Link>
               </div>
           </div>
+      </section>
 
-          <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-x-auto overflow-y-hidden scrollbar-hide mt-10">
-              <div className="flex w-max">
-                  {galleryImages.map((item, idx) => (
-                      <div key={idx} className="relative w-[100vw] h-[350px] md:h-[500px] flex-shrink-0 group">
-                          <img src={item.url} alt={`Gallery ${idx}`} className="w-full h-full object-cover" />
-                          {item.quote && (
-                              <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-6 md:p-12">
-                                  <h3 className="text-white font-serif text-xl md:text-4xl italic leading-relaxed max-w-4xl">"{item.quote}"</h3>
-                              </div>
-                          )}
-                      </div>
-                  ))}
-              </div>
-          </div>
+      {/* New Parallax Quote Section */}
+      <section 
+        className="relative h-[70vh] bg-fixed bg-center bg-cover flex items-center justify-center"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544551763-47a0159f9234?q=80&w=2070&auto=format&fit=crop')" }} 
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
+             <h3 className="text-white font-serif text-2xl md:text-5xl italic leading-relaxed font-semibold shadow-black/50 drop-shadow-2xl">
+                "Fashion is not static; it's an ever-evolving art form. To stay ahead, we must embrace change and innovation."
+             </h3>
+        </div>
       </section>
 
       {/* 7. Ethical & Responsive Sourcing */}
