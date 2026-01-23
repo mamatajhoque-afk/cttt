@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, Facebook, Twitter, Linkedin, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { NavItem } from '../types';
 
 const navItems: NavItem[] = [
@@ -69,11 +69,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            {/* Replaced Logo with Image - White version for Navbar */}
+            {/* Logo Image - White filter for dark navbar */}
             <img 
-                src="https://placehold.co/220x60/transparent/white?text=apparelbd" 
-                alt="ApparelBD" 
-                className="h-10 md:h-12 w-auto object-contain"
+                src="/logos/apparelbd_logo.png" 
+                alt="ApparelBD Logo" 
+                className="h-10 md:h-12 w-auto object-contain brightness-0 invert"
             />
           </div>
 
@@ -166,11 +166,11 @@ const Footer = () => {
           
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
-             {/* Updated Logo in Footer - Dark version */}
+             {/* Logo in Footer - Original Colors */}
              <div className="mb-6">
                 <img 
-                    src="https://placehold.co/220x60/transparent/0a192f?text=apparelbd" 
-                    alt="ApparelBD" 
+                    src="/logos/apparelbd_logo.png" 
+                    alt="ApparelBD Logo" 
                     className="h-12 md:h-16 w-auto object-contain"
                 />
              </div>
