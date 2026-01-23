@@ -5,6 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+        // ADD THIS LINE: This forces Vite to use relative paths for assets
+      base: './',
       server: {
         port: 3000,
         host: '0.0.0.0',
