@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import HeroVideo from '../components/HeroVideo';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Users, Award, Leaf, CheckCircle, Scissors, Package, Ship, Truck, ClipboardCheck, Layers, Settings, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ASSETS } from '../config/assets';
 
 interface Product {
   id: string;
@@ -280,7 +281,7 @@ const Home = () => {
       <HeroVideo 
         title="Committed for Fashion Evolution through..." 
         subtitle="Market Intel Design Support, Product Innovation & Newness, Wide Ranging Versatile Products"
-        videoUrl="https://assets.mixkit.co/videos/preview/mixkit-clothes-on-a-clothing-rack-4217-large.mp4"
+        videoUrl={ASSETS.videos.home}
       />
 
       {/* 2. Quote Section */}
@@ -427,7 +428,7 @@ const Home = () => {
                        ))}
                         <div className="absolute top-6 left-6 flex items-center gap-3 z-10 bg-white/80 p-2 rounded-sm shadow-sm">
                             <img 
-                                src="/apparelbd_logo.png" 
+                                src={ASSETS.logo} 
                                 alt="CoutureTex" 
                                 className="h-10 w-auto object-contain"
                             />

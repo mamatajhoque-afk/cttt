@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { NavItem } from '../types';
+import { ASSETS } from '../config/assets';
 
 const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
@@ -69,9 +70,9 @@ const Navbar = () => {
       <div className="w-full px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            {/* Logo Image - Real colors (removed white filter) */}
+            {/* Logo Image controlled via config/assets.ts */}
             <img 
-                src={import.meta.env.BASE_URL + 'apparelbd_logo.png'}
+                src={ASSETS.logo} 
                 alt="ApparelBD Logo" 
                 className="h-10 md:h-12 w-auto object-contain"
             />
@@ -166,10 +167,10 @@ const Footer = () => {
           
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
-             {/* Logo in Footer - Original Colors */}
+             {/* Logo in Footer */}
              <div className="mb-6">
                 <img 
-                    src="/apparelbd_logo.png" 
+                    src={ASSETS.logo} 
                     alt="ApparelBD Logo" 
                     className="h-12 md:h-16 w-auto object-contain"
                 />
