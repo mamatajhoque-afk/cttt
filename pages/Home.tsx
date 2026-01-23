@@ -3,8 +3,14 @@ import HeroVideo from '../components/HeroVideo';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Users, Award, Leaf, CheckCircle, Scissors, Package, Ship, Truck, ClipboardCheck, Layers, Settings, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
+interface Product {
+  id: string;
+  name: string;
+  images: string[];
+}
+
 // Internal Component for the Product Slider Card
-const ProductCard = ({ product }: { product: { id: string, name: string, images: string[] } }) => {
+const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -323,7 +329,7 @@ const Home = () => {
                     <h4 className="font-bold text-black text-xl md:text-2xl mb-4">
                         Trend-Driven, Ethically Sourced, Trusted & Traceable – Your Fashion Manufacturing Partner-
                     </h4>
-                    <p className="text-sm md:text-base text-gray-500 leading-relaxed font-normal text-justify md:text-left">
+                    <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light md:text-left">
                         We collaborate with globally compliant manufacturers to ensure traceability, quality, and process control. Our design studios in London and Dhaka blend Global Creativity with local talent, focusing on R&D, trend-driven products, and iconic licensed characters like Disney and others. Onsite inspections and full logistics support highlight our commitment to responsible, innovative manufacturing.
                     </p>
                 </div>
@@ -349,7 +355,7 @@ const Home = () => {
             <div className="mb-12 text-left w-full">
                  <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Fashion Evolution</h2>
                  <p className="text-sm font-bold text-gray-800 italic mb-4">Where Trends Begin — Designing Fashion in Motion... !!</p>
-                 <p className="text-base md:text-lg text-gray-600 w-full leading-relaxed text-justify">
+                 <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light w-full">
                     Embark on the journey of Fashion Evolution — where trendsetting design and cutting-edge technology shape the future of style. At COUTURETEX, fashion speaks the language of shifting identities, where imagination meets science and tradition blends with innovation.
                  </p>
             </div>
@@ -405,7 +411,7 @@ const Home = () => {
                   <div className="space-y-6">
                       <h3 className="text-lg font-bold text-black leading-tight">Design Innovation, Elevating Creation, Embracing Co-Creation-</h3>
                       <p className="text-sm font-bold text-black italic">This is more than fashion — it's a revolution !!</p>
-                      <p className="text-[11px] md:text-[13px] text-gray-600 leading-relaxed text-justify max-w-7xl font-medium">
+                      <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                           A fearless pursuit of creativity. A commitment to responsible design. A force for global transformation. Whether launching a label or reimagining your brand, COUTURETEX is your visionary partner. Rooted in London and Dhaka, we blend artistry, innovation, and sustainability to redefine fashion. From concept to runway, every stitch reflects purpose where imagination meets intention. At COUTURETEX, co-creation is a shared journey. We partner with brands to merge identity and expertise, creating collections that are authentic, relevant, and future-ready.
                       </p>
                       <p className="text-[11px] md:text-[12px] font-bold italic text-gray-500">"Timeless Design, Future-Ready Fashion, Crafted by COUTURETEX!!</p>
@@ -425,7 +431,7 @@ const Home = () => {
                       <div className="lg:col-span-4">
                           <h3 className="text-2xl font-bold text-[#1e3a8a] mb-4">London, UK Design Studio:</h3>
                           <div className="space-y-4">
-                              <p className="text-[11px] md:text-[12px] text-gray-700 leading-relaxed text-justify font-medium">
+                              <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                                   The Global Epicenter of Fashion Innovation Based in the heart of the UK, our London studio blends market insight, creative innovation, and cultural fluency to craft timeless, trend-setting collections that embody your brand. Led by UK-born designers with top-brand experience, our team fuses artistic vision with commercial strategy to create striking, sustainable, market-ready collections. At COUTURETEX, we co-create from concept to product—amplifying your brand through purposeful design and innovation.
                               </p>
                               <p className="text-[11px] md:text-[12px] font-bold italic text-black">Let's build the Future of Fashion together!!</p>
@@ -438,10 +444,10 @@ const Home = () => {
                           <h3 className="text-2xl font-bold text-[#1e3a8a] mb-2">Dhaka, Bangladesh Design Studio:</h3>
                           <p className="text-[11px] font-medium text-gray-500 italic mb-4">Where Blending Heritage, Innovation and Global Vision</p>
                           <div className="space-y-4">
-                              <p className="text-[11px] md:text-[12px] text-gray-700 leading-relaxed text-justify font-medium">
+                              <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                                   Nestled in Dhaka's textile hub, our studio fuses generational craft with modern design. Together with our London team, we deliver authentic, scalable fashion that meets global standards.
                               </p>
-                              <p className="text-[11px] md:text-[12px] text-gray-700 leading-relaxed text-justify font-medium">
+                              <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                                   From concept to production, we deliver sustainable, innovative designs with global insight. At COUTURETEX, we create purpose-driven collections that honor artisanship and shape responsible fashion.
                               </p>
                               <p className="text-[11px] md:text-[12px] font-bold italic text-black">Let's shape the future of fashion — From Dhaka to the world!</p>
@@ -484,7 +490,7 @@ const Home = () => {
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                   <div className="pt-10">
                       <h2 className="text-4xl md:text-6xl font-bold text-[#88c057] mb-8">Ethical & Responsive Sourcing</h2>
-                      <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify mb-10 font-medium">
+                      <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light mb-10">
                         Though out the Supply Chain, we are dedicated to ensure Ethical and Responsive Sourcing practices to protect the Individual and Environment. We prioritize transparency, fair labor practices, environmental sustainability, and corporate social responsibility, demonstrating our commitment to ethical business practices and the welfare of all stakeholders. We actively collaborate with our manufacturing partners to incorporate green initiatives and sustainability practices, different CSR programs, promoting for the use of organic, eco-friendly, and recycled materials while leveraging our extensive networks across diverse product categories to promote responsible sourcing and production.
                       </p>
                       <Link to="/ethical-sourcing" className="inline-block border border-gray-400 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-brand-green hover:text-white transition-all">
@@ -513,35 +519,36 @@ const Home = () => {
       </section>
 
       {/* 8. Sustainability Section */}
-      <section className="pt-10 pb-24 bg-[#f4fff4] overflow-hidden border-t border-gray-100">
+      <section className="pt-20 pb-32 bg-[#f4fff4] overflow-hidden border-t border-gray-100">
         <div className="max-w-[95%] mx-auto px-4 lg:px-8">
           <div className="relative">
             {/* Top Row */}
-            <div className="grid lg:grid-cols-2 gap-8 items-start mb-24">
-              <div>
+            <div className="grid lg:grid-cols-2 gap-8 items-start mb-24 relative z-0">
+              <div className="pt-10">
                 <h2 className="text-4xl md:text-6xl font-bold text-[#88c057] mb-8 tracking-tight">Sustainability</h2>
-                <div className="space-y-6 max-w-xl">
-                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                <div className="space-y-6">
+                  <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                     Our operations are guided by a vision of achieving social and ecological equilibrium, where the well-being of both humanity and the environment are prioritized and sustained.
                   </p>
-                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                     Ethically sourcing products and nurturing sustainability are fundamental to our mission, ensuring equitable treatment for workers and actively reducing our environmental impact
                   </p>
                 </div>
               </div>
               <div className="flex justify-end">
-                <div className="w-full max-w-[450px] aspect-square rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+                <div className="w-full max-w-[550px] aspect-square rounded-sm overflow-hidden shadow-2xl border-4 border-white transform translate-x-8">
                   <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop" alt="Forest" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
 
             {/* Middle Image - Stones */}
-            <div className="relative z-10 -mt-24 md:-mt-48 mb-24 flex justify-center">
-              <div className="relative w-full max-w-3xl aspect-[21/9] rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+            {/* Reduced width from max-w-5xl to max-w-4xl */}
+            <div className="relative z-20 -mt-48 md:-mt-80 mb-24 flex justify-center">
+              <div className="relative w-full max-w-4xl aspect-[21/9] rounded-sm overflow-hidden shadow-2xl border-4 border-white">
                 <img src="https://images.unsplash.com/photo-1505118380757-91f5f45d8de4?q=80&w=2000&auto=format&fit=crop" alt="Stones" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-6 text-center">
-                  <p className="text-white font-bold text-lg md:text-3xl leading-tight">
+                  <p className="text-white font-bold text-lg md:text-3xl leading-tight drop-shadow-lg">
                     Sustainability is not only a Tagline, it's a life style<br/>and at the core of our business operation.
                   </p>
                 </div>
@@ -549,18 +556,19 @@ const Home = () => {
             </div>
 
             {/* Bottom Row */}
-            <div className="grid lg:grid-cols-2 gap-8 items-end">
-              <div>
-                <div className="w-full max-w-[450px] aspect-[4/3] rounded-sm overflow-hidden shadow-2xl border-4 border-white">
+            {/* Increased negative margin (-mt-48) and moved image right (translate-x-32) */}
+            <div className="grid lg:grid-cols-2 gap-8 items-end relative z-0 -mt-20 md:-mt-48">
+              <div className="transform translate-x-8 md:translate-x-32">
+                <div className="w-full max-w-[550px] aspect-[4/3] rounded-sm overflow-hidden shadow-2xl border-4 border-white">
                   <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1976&auto=format&fit=crop" alt="Tree" className="w-full h-full object-cover" />
                 </div>
               </div>
-              <div className="pb-8">
-                <div className="space-y-6 max-w-xl">
-                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+              <div className="pb-8 pl-10">
+                <div className="space-y-6">
+                  <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                     Our growth focuses on environmental responsibility, with an emphasis on circular thinking, emission reduction, water conservation, and responsible consumption. We collaborate with partners committed to ethical sourcing and environmental compliance.
                   </p>
-                  <p className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+                  <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                     Sustainability is at the core of our growth plan, influencing every decision and action we take, as we collaborate with the likeminded dedicated partners!!
                   </p>
                   <Link to="/sustainability" className="inline-block border border-brand-green px-8 py-3 text-xs font-bold text-black uppercase tracking-widest hover:bg-brand-green hover:text-white transition-all shadow-sm">
@@ -589,7 +597,7 @@ const Home = () => {
            <div className="mb-24 text-left">
                  <h2 className="text-4xl md:text-6xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight uppercase">MANUFACTURING EXCELLENCE</h2>
                  <p className="text-sm font-bold text-gray-800 italic mb-6">Where Expertise Ignites Precision and Artistry!!</p>
-                 <p className="text-sm md:text-base text-gray-600 leading-relaxed text-justify max-w-7xl font-medium">
+                 <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light w-full">
                     COUTURETEX Sourcing stands as a Cornerstone of Manufacturing excellence, where the craft transcends machinery to embody precision, safety, and empowerment. From the initial fabric cut to the final stitch, every stage reflects a commitment to surpassing industry standards, delivering garments distinguished by exceptional quality, integrity, and artistry.
                  </p>
            </div>
@@ -600,7 +608,7 @@ const Home = () => {
               <div className="lg:col-span-5 text-left">
                  <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Fitting/Garment Technical Support</h2>
                  <p className="text-sm font-bold text-gray-800 italic mb-8">Elevating Wearability, Style and Functionality...!!</p>
-                 <p className="text-sm md:text-base text-gray-600 leading-relaxed text-justify mb-8 font-medium">
+                 <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light mb-8">
                     Garments are designed to look stunning, fit flawlessly, and move with effortless grace. Every detail—craftsmanship, fit, and aesthetics—is meticulously refined by a dedicated in-house technical team. Personalized fitting support and technical assistance are provided to ensure expectations are exceeded, enhancing comfort, style, and functionality for greater customer satisfaction.
                  </p>
                  <Link to="/manufacturing" className="inline-block bg-[#1e3a8a] text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#1e3a8a]/90 transition-all shadow-xl rounded-sm">
@@ -635,7 +643,7 @@ const Home = () => {
                     <p className="text-black italic font-medium mb-8 text-lg">
                         Optimizing Efficiency, Ensuring Quality, Orchestrating Excellence!!
                     </p>
-                    <div className="space-y-6 text-gray-700 leading-relaxed text-justify font-medium text-base">
+                    <div className="space-y-6 text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                         <p>
                             At the core of our production control framework are four key components: Material Requirement Planning (MRP), Capacity Planning, Production Scheduling, and Quality Control. These elements work together to ensure a seamless, efficient manufacturing process, managing everything from material sourcing to final product inspection.
                         </p>
@@ -650,10 +658,10 @@ const Home = () => {
            <div className="grid lg:grid-cols-2 gap-12 items-center mt-20">
                {/* Left: Text */}
                <div>
-                   <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify font-medium mb-8">
+                   <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light mb-8">
                         Capacity Planning aligns production with demand to optimize resources and balance workloads. Production Scheduling organizes tasks to maximize output and minimize downtime. Quality Control upholds standards to ensure every product meets or exceeds expectations.
                    </p>
-                   <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify font-medium mb-8">
+                   <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light mb-8">
                         The supply chain is managed to reduce waste and boost productivity. Competitive pricing and flexible lead times are achieved through this careful oversight. Operational excellence and exceptional client value are ensured by integrating these elements
                    </p>
                    <Link to="/manufacturing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
@@ -693,7 +701,7 @@ const Home = () => {
                <div>
                     <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Quality Assurance:</h2>
                     <p className="text-sm font-bold text-gray-800 italic mb-8">Redefining Excellence in Craftsmanship and Enduring Durability</p>
-                    <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify mb-8 font-medium">
+                    <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light mb-8">
                         Committed to upholding impeccable standards through rigorous quality control, we ensure every garment exceeds expectations for craftsmanship and durability. In collaboration with our partners, we apply advanced protocols— including lab testing and onsite inspections—at every stage of production, reinforcing confidence in the integrity and excellence of our products.
                     </p>
                     <Link to="/manufacturing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
@@ -711,7 +719,7 @@ const Home = () => {
                 <p className="font-bold text-gray-900 mb-6 italic text-sm md:text-base">
                    Real-Time Updates Promote-Transparency, Ethics, and Accountability—Fostering Trust Across the Supply Chain.
                 </p>
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify mb-8 font-medium">
+                <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light mb-8">
                    We prioritize fair traceability by providing real-time updates at every stage of the product journey—from raw material sourcing to manufacturing—ensuring ethical practices and supply chain accountability.
                 </p>
                 <Link to="/ethical-sourcing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
@@ -744,7 +752,7 @@ const Home = () => {
                 <div>
                     <h2 className="text-3xl md:text-4xl font-bold text-[#1e3a8a] mb-2 font-sans tracking-tight">Shipping And Logistics</h2>
                     <p className="text-sm font-bold text-gray-800 italic mb-8">Streamlined Delivery, Global Reach!!</p>
-                    <p className="text-sm md:text-base text-gray-700 leading-relaxed text-justify mb-8 font-medium">
+                    <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light mb-8">
                         COUTURETEX Sourcing ensures a seamless end-to-end logistics experience through our dedicated in-house shipping and logistics team. We streamline supply chain processes and manage all shipping and forwarder formalities with precision. From manufacturing facilities to global destinations, we oversee every step to guarantee efficient delivery and the highest level of customer satisfaction.
                     </p>
                     <Link to="/manufacturing" className="inline-block border border-gray-500 px-6 py-2 text-[10px] font-bold text-black uppercase tracking-widest hover:bg-[#1e3a8a] hover:text-white hover:border-[#1e3a8a] transition-all bg-[#e6e6e6]">
@@ -768,7 +776,7 @@ const Home = () => {
         <div className="max-w-[95%] mx-auto px-4">
              <div className="text-center mb-16">
                  <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a8a] mb-6">Products</h2>
-                 <p className="text-sm md:text-base text-gray-600 max-w-6xl mx-auto leading-relaxed font-medium">
+                 <p className="text-gray-700 mx-auto leading-relaxed text-lg md:text-xl text-justify font-light">
                     At the crossroads of innovation and style, we provide an extensive range of products to meet diverse fashion preferences, blending timeless elegance with the latest trends. Our mission is to enhance your sourcing supply chain from design to delivery. With a focus on 12 distinct categories, we tailor sourcing solutions to meet your needs effectively.
                  </p>
              </div>
@@ -808,7 +816,7 @@ const Home = () => {
                 {/* Left Side: Text */}
                 <div className="text-left">
                     <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a8a] mb-8 font-sans">All About Us</h2>
-                    <p className="text-base text-gray-700 leading-relaxed text-justify font-medium">
+                    <p className="text-gray-700 leading-relaxed text-lg md:text-xl text-justify font-light">
                         We believe that Fashion is not just about Clothing, it's an ever evolving statement, an expression of Identity, Culture context of time and place, perception, aspiration, creativity and innovation, value and belief of individual and community.
                     </p>
                 </div>
