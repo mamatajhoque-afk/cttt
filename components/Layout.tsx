@@ -41,6 +41,7 @@ const navItems: NavItem[] = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<{[key: string]: boolean}>({});
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -65,17 +66,27 @@ const Navbar = () => {
     }
   };
 
+  const toggleMobileDropdown = (label: string) => {
+    setMobileExpanded(prev => ({
+      ...prev,
+      [label]: !prev[label]
+    }));
+  };
+
+  // Dynamic text color based on scroll state
+  const textColorClass = scrolled ? 'text-brand-navy' : 'text-gray-100';
+  const mobileMenuButtonClass = scrolled ? 'text-brand-navy' : 'text-gray-200';
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-brand-navy shadow-lg py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#eaf2ff] shadow-lg py-2' : 'bg-transparent py-4'}`}>
       <div className="w-full px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            {/* Logo Image controlled via config/assets.ts */}
-            <img 
+             <img 
                 src={ASSETS.logo} 
                 alt="ApparelBD Logo" 
-                className="h-10 md:h-12 w-auto object-contain"
-            />
+                className="h-12 md:h-16 w-auto object-contain"
+             />
           </div>
 
           {/* Desktop Menu */}
@@ -84,7 +95,7 @@ const Navbar = () => {
               <div key={item.label} className="relative group">
                 <button 
                   onClick={() => handleNavClick(item.path)}
-                  className="text-gray-100 hover:text-brand-green px-2 py-2 text-sm font-medium flex items-center transition-colors"
+                  className={`${textColorClass} hover:text-brand-green px-2 py-2 text-sm font-medium flex items-center transition-colors`}
                 >
                   {item.label}
                   {item.dropdown && <ChevronDown className="ml-1 w-4 h-4" />}
@@ -117,7 +128,7 @@ const Navbar = () => {
           <div className="flex lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-200 hover:text-white p-2"
+              className={`${mobileMenuButtonClass} hover:text-brand-green p-2 transition-colors`}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -127,23 +138,41 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-brand-navy border-t border-gray-700">
+        <div className="lg:hidden bg-[#eaf2ff] border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 h-screen overflow-y-auto pb-20">
             {navItems.map((item) => (
               <div key={item.label}>
-                <button
-                  onClick={() => handleNavClick(item.path)}
-                  className="block w-full text-left px-3 py-2 text-base font-medium text-white hover:text-brand-green hover:bg-gray-800 rounded-md"
-                >
-                  {item.label}
-                </button>
+                <div className="flex items-center justify-between w-full hover:bg-white/50 rounded-md">
+                    <button
+                      onClick={() => handleNavClick(item.path)}
+                      className="text-left px-3 py-2 text-base font-medium text-brand-navy hover:text-brand-green flex-grow"
+                    >
+                      {item.label}
+                    </button>
+                    {item.dropdown && (
+                        <button 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                toggleMobileDropdown(item.label);
+                            }}
+                            className="p-3 text-brand-navy hover:text-brand-green"
+                        >
+                            <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileExpanded[item.label] ? 'rotate-180' : ''}`} />
+                        </button>
+                    )}
+                </div>
+                
                 {item.dropdown && (
-                  <div className="pl-4 space-y-1 bg-black/20">
+                  <div 
+                    className={`pl-4 space-y-1 bg-black/5 rounded-md overflow-hidden transition-all duration-300 ease-in-out ${
+                      mobileExpanded[item.label] ? 'max-h-[500px] opacity-100 py-2' : 'max-h-0 opacity-0 py-0'
+                    }`}
+                  >
                     {item.dropdown.map((subItem) => (
                       <button
                         key={subItem.label}
                         onClick={() => handleNavClick(subItem.path)}
-                        className="block w-full text-left px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 rounded-md"
+                        className="block w-full text-left px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-green hover:bg-white/50 rounded-md"
                       >
                         {subItem.label}
                       </button>
@@ -172,7 +201,7 @@ const Footer = () => {
                 <img 
                     src={ASSETS.logo} 
                     alt="ApparelBD Logo" 
-                    className="h-12 md:h-16 w-auto object-contain"
+                    className="h-16 md:h-24 w-auto object-contain" 
                 />
              </div>
             <h3 className="font-bold text-xl border-b-2 border-brand-green inline-block pb-1">All About Us</h3>
